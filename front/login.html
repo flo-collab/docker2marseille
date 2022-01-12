@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css"/>
+        <title>Flo ImmOoO</title>
+    </head>
+    <body>
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'upload' %}">Upload</a>
+            <a href="{% url 'visualize' %}">visualize</a>
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'logout' %}">Logout</a>
+            <div class="animation start-home"></div>
+        </nav>
+
+        <form class="form_login" method = "post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button class = button_login type="submit">Log In</button>
+          <!-- <button onclick="window.location.href={% url 'home' %}">Retour</button> -->
+        </form>
+
+        <p class = signature>
+            By <span>Flo</span>
+        </p>                                                                                                             
+    </body>
+</html>

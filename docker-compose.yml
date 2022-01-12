@@ -1,0 +1,54 @@
+version: "2"
+services:
+
+  database:
+    image: 'postgres'
+    restart: 'always'
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgree'
+      POSTGRES_DB: 'django_db'
+    ports:
+      - 5432:5432
+    networks:
+      - monreseau
+
+
+  front:
+    build: ./front
+    image: front_img
+
+    volumes:
+        - './front:/usr/local/apache2/htdocs/'
+    ports:
+        - '8080:80'
+
+    networks:
+      - monreseau
+# On consulte sur  http://localhost:8080
+# à la place de 8080:80 on passera surement à 80:80 pour le deploiement
+
+
+  back:
+    build: ./back
+    image: back_img
+    # command: python -c 'import time;time.sleep(9999999)'
+    command: >
+      bash -c "python manage.py migrate
+      && python manage.py makemigrations
+      && python manage.py runserver 0.0.0.0:8000"
+
+    depends_on:
+      - database
+    links:
+      - database
+
+    volumes:
+      - './back:/src/'
+    ports:
+    - 8000:8000
+    networks:
+      - monreseau
+
+networks:
+  monreseau:

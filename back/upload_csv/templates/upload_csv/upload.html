@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% block content %}
+
+<h1>
+    Telechargez un csv
+</h1>
+<div>
+
+    <form class= form_up method="post" action = "{% url 'apres_upload' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input class=imput_up  type="file" name="myfile" accept=".csv">
+            <button class = button_up type="submit">
+                    Upload
+            </button>
+    </form>
+
+    <!-- <button type="submit">
+        Delete
+        <a href ="{% url 'apres_upload' %}"> va vers la page couleur </a>
+    </button> -->
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css"/>
+        <title>Flo ImmOoO</title>
+    </head>
+    <body>
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'upload' %}">Upload</a>
+            <a href="{% url 'visualize' %}">visualize</a>
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'logout' %}">Logout</a>
+            <div class="animation start-home"></div>
+        </nav>
+        <h1>Visualize page</h1>
+
+
+        <p >
+            <div class = "nb_biens" id='inject_nb_bien'></div>
+            <div class = "nb_biens" id='inject_mean_price'></div>
+        </p>
+        
+        <div style = 'text-align:center'>
+        <a href ="{% url 'visualize_send_mail' %}">
+            <button class = 'button_up' type="submit">
+                Envoyer ces resultats par mail
+            </button>
+        </a>
+        </div>
+        <p id = "some_test_here"></p>
+        <table class="table_ville">
+            <thead>    
+                <tr>
+                    <th>Ville</th>
+                    <th>Prix Moyen</th>
+                    <th>Ecart type du prix</th>
+                </tr>
+            </thead>
+            <tbody id="data_ville_tbody">
+
+            </tbody>
+        </tabl>
+        <p class = signature>
+            By <span>Flo</span>
+        </p>                                                                                                             
+    </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="script.js"></script>  
+</html>
