@@ -22,13 +22,15 @@
         </p>
         
         <div style = 'text-align:center'>
-        <a href ="{% url 'visualize_send_mail' %}">
-            <button class = 'button_up' type="submit">
+        <!-- <a href ="http://localhost:8000/visualize/send_mail/"> -->
+            <button id = "button_test" class = 'button_up' type="submit">
                 Envoyer ces resultats par mail
             </button>
         </a>
         </div>
-        <p id = "some_test_here"></p>
+        <p id = "result_mail" class="nb_biens">
+        </p>
+
         <table class="table_ville">
             <thead>    
                 <tr>
@@ -38,13 +40,13 @@
                 </tr>
             </thead>
             <tbody id="data_ville_tbody">
-
             </tbody>
+
         </tabl>
         <p class = signature>
             By <span>Flo</span>
         </p>                                                                                                             
     </body>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script src="script.js"></script>  
+    <script src="visualize.js"></script>  
 </html>

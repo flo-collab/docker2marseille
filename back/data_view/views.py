@@ -8,6 +8,7 @@ from django.core.mail import send_mail
 import os
 import pandas as pd
 import numpy as np
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -22,8 +23,6 @@ def ville_to_db(path):
         ville.avg_price = row[1]
         ville.std_deviation= row[2]
         ville.save()
-    print(Ville.objects.count())
-
     json_ville = df_ville.to_json(orient="values")
     return Ville.objects.all(), json_ville
 
@@ -36,31 +35,25 @@ def avg_price_and_count(path):
 
 
 def visualize(request):
-    print('page visualize')
     biens = Bien.objects.all()
-    path = settings.MEDIA_ROOT+'\\'+os.listdir(settings.MEDIA_ROOT)[0]
+    path = os.path.join(settings.MEDIA_ROOT,os.listdir(settings.MEDIA_ROOT)[0])
     villes, json_ville = ville_to_db(path)
     mean_price, nb_bien = avg_price_and_count(path)
     data_json = {'data_villes':json_ville,'nb_biens':nb_bien,'mean_price':mean_price}
     context = {'biens':biens, 'villes':villes, 'mean_price':mean_price}
-
-    return render(request,'data_view/visualize_data.html',context)
-
-
+    return JsonResponse(data_json)
+    # return render(request,'data_view/visualize_data.html',context)
 
 
 def visualize_send_mail(request):
-    biens = Bien.objects.all()
-    path = settings.MEDIA_ROOT+'\\'+os.listdir(settings.MEDIA_ROOT)[0]
-    villes = ville_to_db(path)
+    path = os.path.join(settings.MEDIA_ROOT,os.listdir(settings.MEDIA_ROOT)[0])
     mean_price, nb_bien = avg_price_and_count(path)
-    context = {'biens':biens, 'villes':villes, 'mean_price':mean_price}
-    message = (Send_mail.objects.all()[0].message
-    .replace('{mean_price}',str(mean_price))
-    .replace('{nb_bien}',str(nb_bien)))
-    send_mail(Send_mail.objects.all()[0].sujet,
-                message,
-                settings.EMAIL_HOST_USER,
-                [Send_mail.objects.all()[0].mail_destinataire])
-
-    return render(request,'data_view/visualize_data.html',context)
+    # message = (Send_mail.objects.all()[0].message
+    # .replace('{mean_price}',str(mean_price))
+    # .replace('{nb_bien}',str(nb_bien)))
+    # send_mail(Send_mail.objects.all()[0].sujet,
+    #             message,
+    #             settings.EMAIL_HOST_USER,
+    #             [Send_mail.objects.all()[0].mail_destinataire])
+    return JsonResponse({"result_mail":"Mail envoyé"})
+    # return render(request,'data_view/visualize_data.html',context)

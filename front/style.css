@@ -3,15 +3,18 @@ html {
   }
 
 body {
-
+	/* position: absolute; */
 	font-size: 12px;
 	font-family: sans-serif;
-    /* background:#F5624D; */
-
+	background-attachment: scroll;
+	/* background-repeat: no-repeat; */
+	/* background-position: center; */
+	/* background-size: cover; */
     background:linear-gradient(#235E6F,#F5624D);
+	    /* background:#F5624D; */
     /* background:linear-gradient( #235E6F,#F5624D); */
 	/* background:linear-gradient( #235E6F,#0F8A5F); */
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
 }
 /* (#F5624D, #235E6F); */
 /* (#CC231E, #F5624D) */
@@ -230,19 +233,21 @@ table{
 	margin: 2px auto;
 	position:relative;}
   
-	td, th {
-	  border: 1px solid black;
-	  text-align:left;
-		  text-align:right;
-		  text-align:center;
-		  text-align:center;
-	}
-	
-	thead, tr{ 
-	  height:60px;
-	  background:#34a689;
-	  font-size:16px;
-	};
+td, th {
+	border: 1px solid black;
+	text-align:left;
+		text-align:right;
+		text-align:center;
+		text-align:center;
+}
+
+thead, tr{ 
+	height:60px;
+	background:#34a689;
+	font-size:16px;
+}
   
-  
+#result_mail{
+	text-align:center;
+}
 	  

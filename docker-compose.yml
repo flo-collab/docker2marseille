@@ -17,14 +17,15 @@ services:
   front:
     build: ./front
     image: front_img
-
     volumes:
         - './front:/usr/local/apache2/htdocs/'
     ports:
         - '8080:80'
-
     networks:
       - monreseau
+
+
+
 # On consulte sur  http://localhost:8080
 # à la place de 8080:80 on passera surement à 80:80 pour le deploiement
 
@@ -36,12 +37,14 @@ services:
     command: >
       bash -c "python manage.py migrate
       && python manage.py makemigrations
+      && echo "lala"
       && python manage.py runserver 0.0.0.0:8000"
 
     depends_on:
       - database
     links:
       - database
+      - front
 
     volumes:
       - './back:/src/'

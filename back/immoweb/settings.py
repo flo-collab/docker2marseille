@@ -40,10 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'upload_csv',
-    'data_view'
+    'data_view',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'immoweb.urls'
@@ -154,3 +157,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+
+
+
+CORS_ORIGIN_WHITELIST = [
+    # 'localhost:8080',
+    # 'front',
+    # 'front:8080',
+    # 'ae2e14fd51af'
+    'http://localhost:8080',
+    'http://front',
+    'http://front:8080',
+    'http://ae2e14fd51af'
+    
+]
