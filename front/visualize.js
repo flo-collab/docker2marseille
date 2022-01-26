@@ -17,6 +17,8 @@ fetch(request1)
         document.getElementById('inject_nb_bien').append('Il y a actuellement ', response['nb_biens'],' biens immobiliers')
         document.getElementById('inject_mean_price').append('Leur prix moyen est de ',response['mean_price'], ' €')
         var data_villes = JSON.parse(response['data_villes'])
+
+        
         console.log(data_villes[0]);
         console.log(data_villes.length);
         var tbody = document.getElementById("data_ville_tbody")

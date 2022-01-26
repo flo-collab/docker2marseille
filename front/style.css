@@ -9,7 +9,7 @@ body {
 	background-attachment: scroll;
 	/* background-repeat: no-repeat; */
 	/* background-position: center; */
-	/* background-size: cover; */
+	background-size: cover;
     background:linear-gradient(#235E6F,#F5624D);
 	    /* background:#F5624D; */
     /* background:linear-gradient( #235E6F,#F5624D); */

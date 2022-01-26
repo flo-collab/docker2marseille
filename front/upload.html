@@ -6,11 +6,11 @@
     </head>
     <body>
         <nav>
-            <a href="{% url 'home' %}">Home</a>
-            <a href="{% url 'upload' %}">Upload</a>
-            <a href="{% url 'visualize' %}">visualize</a>
-            <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'logout' %}">Logout</a>
+            <a href="index.html">Home</a>
+            <a href="upload.html">Upload</a>
+            <a href="visualize_data.html">visualize</a>
+            <a href="login.html">Login</a>
+            <a id ="logout" href="index.html">Logout</a>
             <div class="animation start-home"></div>
         </nav>
 
@@ -18,10 +18,11 @@
             Telechargez un csv
         </h1>
         <div>
-            <form class= form_up method="post" action = "{% url 'apres_upload' %}" enctype="multipart/form-data">
+            <!-- <form class= form_up method="post" action = "http://localhost:8000/up/post_csv/" enctype="multipart/form-data"> -->
+            <form id ="form_up" class= form_up method="post"  enctype="multipart/form-data">
                 {% csrf_token %}
                 <input class=imput_up  type="file" name="myfile" accept=".csv">
-                    <button class = button_up type="submit">
+                    <button id = 'upload_button' class = button_up type="submit">
                             Upload
                     </button>
             </form>
@@ -30,4 +31,6 @@
             By <span>Flo</span>
         </p>                                                                                                             
     </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="upload.js"></script>  
 </html>
